@@ -698,7 +698,7 @@ public class clientCommunication {
         return exception;
     }
 
-    public DTOException prepareSimulation(Integer requestId, String userName, Map<String, String> environmentsValues, Map<String, Integer> entitiesPopulation) throws Exception{
+    public DTOResultOfPrepareSimulation prepareSimulation(Integer requestId, String userName, Map<String, String> environmentsValues, Map<String, Integer> entitiesPopulation) throws Exception{
         String RESOURCE = "/prepareSimulation";
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
@@ -734,8 +734,8 @@ public class clientCommunication {
         //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+        DTOResultOfPrepareSimulation resultOfPrepareSimulation = gson.fromJson(response.body().string(), DTOResultOfPrepareSimulation.class);
+        return resultOfPrepareSimulation;
 
     }
 
@@ -1152,6 +1152,7 @@ public class clientCommunication {
 
     public List<Integer> getNewlyFinishedSimulation(Integer startIndex){
         synchronized (simulationFinishedId) {
+            prevIndexForFinishedSimulation = indexForFinishedSimulation;
             return simulationFinishedId.stream().skip(startIndex).collect(Collectors.toList());
         }
     }

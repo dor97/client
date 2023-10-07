@@ -4,11 +4,11 @@
     <root id="archive" name="client.jar">
       <element id="module-output" name="client" />
       <element id="file-copy" path="$PROJECT_DIR$/../okclient/annotations-13.0.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../DTOs/out/artifacts/DTOs/DTOs.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../okclient/kotlin-stdlib-1.4.10.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../okclient/okhttp-4.9.1.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../okclient/okio-2.8.0.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../gson/gson-2.8.8.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../DTO/out/artifacts/DTO/DTO.jar" />
     </root>
   </artifact>
 </component>
