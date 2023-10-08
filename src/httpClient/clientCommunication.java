@@ -1128,6 +1128,42 @@ public class clientCommunication {
         return map;
     }
 
+    public DTOAllSimulationId getAllSimulationIdInSystem(Integer index)throws Exception{
+        String RESOURCE = "/getAllSimulationIdInSystem";
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
+
+        // Add query parameters to the URL
+        urlBuilder.addQueryParameter("index", index.toString());
+
+
+        String url = urlBuilder.build().toString();
+        Gson gson = new Gson();
+
+
+//        RequestBody body =
+//                new MultipartBody.Builder()
+//                        .addFormDataPart("file", file.getName(), RequestBody.create(file, MediaType.parse("text/plain")))
+//                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                        .build();
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        Call call = HTTP_CLIENT.newCall(request);
+
+        Response response = call.execute();
+
+        //System.out.println(response.body().string());
+
+
+        DTOAllSimulationId allSimulationId = gson.fromJson(response.body().string(), DTOAllSimulationId.class);
+        return allSimulationId;
+    }
+
 
     public void setChosenSimulationId(Integer chosenSimulationId){
         this.chosenSimulationId = chosenSimulationId;
