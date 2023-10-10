@@ -792,7 +792,7 @@ public class clientCommunication {
     }
 
     public DTOException setThreadPoolSize(Integer size){
-        String RESOURCE = "/prepareSimulation";
+        String RESOURCE = "/setThreadPoolSize";
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
 
