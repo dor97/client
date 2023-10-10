@@ -121,12 +121,18 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        System.out.println(response.body().string());
-        Gson gson = new Gson();
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            System.out.println(response.body().string());
+            Gson gson = new Gson();
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
 
     }
 
@@ -156,12 +162,18 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
-        Gson gson = new Gson();
-        DTOWorldDifenichanCollecen worldDifenichanCollecen = gson.fromJson(response.body().string(), DTOWorldDifenichanCollecen.class);
-        return worldDifenichanCollecen;
+            //System.out.println(response.body().string());
+            Gson gson = new Gson();
+            DTOWorldDifenichanCollecen worldDifenichanCollecen = gson.fromJson(response.body().string(), DTOWorldDifenichanCollecen.class);
+            if(!worldDifenichanCollecen.getException().getException().equals("allGood")){
+                throw new InvalidValue(worldDifenichanCollecen.getException().getException());
+            }
+            return worldDifenichanCollecen;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOSimulationsDetails getAllSimulationDetails() throws Exception{
@@ -181,12 +193,18 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
-        Gson gson = new Gson();
-        DTOSimulationsDetails simulationsDetails = gson.fromJson(response.body().string(), DTOSimulationsDetails.class);
-        return simulationsDetails;
+            //System.out.println(response.body().string());
+            Gson gson = new Gson();
+            DTOSimulationsDetails simulationsDetails = gson.fromJson(response.body().string(), DTOSimulationsDetails.class);
+            if(!simulationsDetails.getException().getException().equals("allGood")){
+                throw new InvalidValue(simulationsDetails.getException().getException());
+            }
+            return simulationsDetails;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOAllSimulationStatus getAllSimulationStatus() throws Exception{
@@ -206,13 +224,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOAllSimulationStatus allSimulationStatus = gson.fromJson(response.body().string(), DTOAllSimulationStatus.class);
-        return allSimulationStatus;
+            Gson gson = new Gson();
+            DTOAllSimulationStatus allSimulationStatus = gson.fromJson(response.body().string(), DTOAllSimulationStatus.class);
+            if(!allSimulationStatus.getException().getException().equals("allGood")){
+                throw new InvalidValue(allSimulationStatus.getException().getException());
+            }
+            return allSimulationStatus;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
 
     }
 
@@ -247,13 +271,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOSimulationDetails simulationDetails = gson.fromJson(response.body().string(), DTOSimulationDetails.class);
-        return simulationDetails;
+            Gson gson = new Gson();
+            DTOSimulationDetails simulationDetails = gson.fromJson(response.body().string(), DTOSimulationDetails.class);
+            if(!simulationDetails.getException().getException().equals("allGood")){
+                throw new InvalidValue(simulationDetails.getException().getException());
+            }
+            return simulationDetails;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
 
     }
 
@@ -288,13 +318,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTODataForReRun dataForReRun = gson.fromJson(response.body().string(), DTODataForReRun.class);
-        return dataForReRun;
+            Gson gson = new Gson();
+            DTODataForReRun dataForReRun = gson.fromJson(response.body().string(), DTODataForReRun.class);
+            if(!dataForReRun.getException().getException().equals("allGood")){
+                throw new InvalidValue(dataForReRun.getException().getException());
+            }
+            return dataForReRun;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOIsSimulationGotError getIsSimulationGotError(Integer simulationId) throws Exception{
@@ -328,13 +364,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOIsSimulationGotError isSimulationGotError = gson.fromJson(response.body().string(), DTOIsSimulationGotError.class);
-        return isSimulationGotError;
+            Gson gson = new Gson();
+            DTOIsSimulationGotError isSimulationGotError = gson.fromJson(response.body().string(), DTOIsSimulationGotError.class);
+            if(!isSimulationGotError.getException().getException().equals("allGood")){
+                throw new InvalidValue(isSimulationGotError.getException().getException());
+            }
+            return isSimulationGotError;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOSimulationError getSimulationError(Integer simulationId) throws Exception{
@@ -368,13 +410,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOSimulationError simulationError = gson.fromJson(response.body().string(), DTOSimulationError.class);
-        return simulationError;
+            Gson gson = new Gson();
+            DTOSimulationError simulationError = gson.fromJson(response.body().string(), DTOSimulationError.class);
+            if(!simulationError.getException().getException().equals("allGood")){
+                throw new InvalidValue(simulationError.getException().getException());
+            }
+            return simulationError;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOSimulationDetailsPostRun getPostRunData(Integer simulationId) throws Exception{
@@ -408,13 +456,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOSimulationDetailsPostRun simulationDetailsPostRun = gson.fromJson(response.body().string(), DTOSimulationDetailsPostRun.class);
-        return simulationDetailsPostRun;
+            Gson gson = new Gson();
+            DTOSimulationDetailsPostRun simulationDetailsPostRun = gson.fromJson(response.body().string(), DTOSimulationDetailsPostRun.class);
+            if(!simulationDetailsPostRun.getException().getException().equals("allGood")){
+                throw new InvalidValue(simulationDetailsPostRun.getException().getException());
+            }
+            return simulationDetailsPostRun;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTORunningSimulationDetails getRunningSimulationDTO(Integer simulationId) throws Exception{
@@ -448,13 +502,16 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTORunningSimulationDetails runningSimulationDetails = gson.fromJson(response.body().string(), DTORunningSimulationDetails.class);
-        return runningSimulationDetails;
+            Gson gson = new Gson();
+            DTORunningSimulationDetails runningSimulationDetails = gson.fromJson(response.body().string(), DTORunningSimulationDetails.class);
+            return runningSimulationDetails;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOSimulationStatus getSimulationStatus(Integer simulationId) throws Exception{
@@ -488,13 +545,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOSimulationStatus simulationStatus = gson.fromJson(response.body().string(), DTOSimulationStatus.class);
-        return simulationStatus;
+            Gson gson = new Gson();
+            DTOSimulationStatus simulationStatus = gson.fromJson(response.body().string(), DTOSimulationStatus.class);
+            if(!simulationStatus.getException().getException().equals("allGood")){
+                throw new InvalidValue(simulationStatus.getException().getException());
+            }
+            return simulationStatus;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOAllRequestData GetSystemData() throws Exception{
@@ -528,13 +591,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOAllRequestData allRequestData = gson.fromJson(response.body().string(), DTOAllRequestData.class);
-        return allRequestData;
+            Gson gson = new Gson();
+            DTOAllRequestData allRequestData = gson.fromJson(response.body().string(), DTOAllRequestData.class);
+            if(!allRequestData.getException().getException().equals("allGood")){
+                throw new InvalidValue(allRequestData.getException().getException());
+            }
+            return allRequestData;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOThreadPoolDetails getThreadPoolDetails() throws Exception{
@@ -568,13 +637,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOThreadPoolDetails threadPoolDetails = gson.fromJson(response.body().string(), DTOThreadPoolDetails.class);
-        return threadPoolDetails;
+            Gson gson = new Gson();
+            DTOThreadPoolDetails threadPoolDetails = gson.fromJson(response.body().string(), DTOThreadPoolDetails.class);
+            if(!threadPoolDetails.getException().getException().equals("allGood")){
+                throw new InvalidValue(threadPoolDetails.getException().getException());
+            }
+            return threadPoolDetails;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOIsSimulationRunning isSimulationRunning(Integer simulationId)throws Exception{
@@ -608,13 +683,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTOIsSimulationRunning isSimulationRunning = gson.fromJson(response.body().string(), DTOIsSimulationRunning.class);
-        return isSimulationRunning;
+            Gson gson = new Gson();
+            DTOIsSimulationRunning isSimulationRunning = gson.fromJson(response.body().string(), DTOIsSimulationRunning.class);
+            if(!isSimulationRunning.getException().getException().equals("allGood")){
+                throw new InvalidValue(isSimulationRunning.getException().getException());
+            }
+            return isSimulationRunning;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTONumOfCounterRunningSimulation NumOfCounterRunningSimulation(String simulationName) throws Exception{
@@ -648,13 +729,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
-        Gson gson = new Gson();
-        DTONumOfCounterRunningSimulation numOfCounterRunningSimulation = gson.fromJson(response.body().string(), DTONumOfCounterRunningSimulation.class);
-        return numOfCounterRunningSimulation;
+            Gson gson = new Gson();
+            DTONumOfCounterRunningSimulation numOfCounterRunningSimulation = gson.fromJson(response.body().string(), DTONumOfCounterRunningSimulation.class);
+            if(!numOfCounterRunningSimulation.getException().getException().equals("allGood")){
+                throw new InvalidValue(numOfCounterRunningSimulation.getException().getException());
+            }
+            return numOfCounterRunningSimulation;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOException pauseSimulation(Integer simulationId) throws Exception{
@@ -689,13 +776,66 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
+    }
+
+    public DTOException setThreadPoolSize(Integer size){
+        String RESOURCE = "/prepareSimulation";
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
+
+        // Add query parameters to the URL
+        //urlBuilder.addQueryParameter("simulationId", simulationId.toString());
+
+        String url = urlBuilder.build().toString();
+        Gson gson = new Gson();
+
+
+//        RequestBody body =
+//                new MultipartBody.Builder()
+//                        .addFormDataPart("file", file.getName(), RequestBody.create(file, MediaType.parse("text/plain")))
+//                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                        .build();
+
+        DTOThreadPoolSize threadPoolSize = new DTOThreadPoolSize();
+        threadPoolSize.setSize(size);
+
+        String json = gson.toJson(threadPoolSize);
+
+        RequestBody body = RequestBody.create(json, MediaType.parse("text/plain"));
+
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+
+        Call call = HTTP_CLIENT.newCall(request);
+
+        try(Response response = call.execute()) {
+
+            //System.out.println(response.body().string());
+
+
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOResultOfPrepareSimulation prepareSimulation(Integer requestId, String userName, Map<String, String> environmentsValues, Map<String, Integer> entitiesPopulation) throws Exception{
@@ -729,13 +869,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOResultOfPrepareSimulation resultOfPrepareSimulation = gson.fromJson(response.body().string(), DTOResultOfPrepareSimulation.class);
-        return resultOfPrepareSimulation;
+            DTOResultOfPrepareSimulation resultOfPrepareSimulation = gson.fromJson(response.body().string(), DTOResultOfPrepareSimulation.class);
+            if(!resultOfPrepareSimulation.getException().getException().equals("allGood")){
+                throw new InvalidValue(resultOfPrepareSimulation.getException().getException());
+            }
+            return resultOfPrepareSimulation;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
 
     }
 
@@ -773,13 +919,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOException resumeSimulation(Integer simulationId) throws Exception{
@@ -814,13 +966,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOAllSimulationApprovementManager _getApprovementManager() throws Exception{
@@ -849,13 +1007,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOAllSimulationApprovementManager allSimulationApprovementManager = gson.fromJson(response.body().string(), DTOAllSimulationApprovementManager.class);
-        return allSimulationApprovementManager;
+            DTOAllSimulationApprovementManager allSimulationApprovementManager = gson.fromJson(response.body().string(), DTOAllSimulationApprovementManager.class);
+            if(!allSimulationApprovementManager.getException().getException().equals("allGood")){
+                throw new InvalidValue(allSimulationApprovementManager.getException().getException());
+            }
+            return allSimulationApprovementManager;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTORequestId _askToRunASimulation(String simulationName, Integer amountToRun, Integer ticks, Integer sec)throws Exception{
@@ -889,13 +1053,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTORequestId requestId = gson.fromJson(response.body().string(), DTORequestId.class);
-        return requestId;
+            DTORequestId requestId = gson.fromJson(response.body().string(), DTORequestId.class);
+            if(!requestId.getException().getException().equals("allGood")){
+                throw new InvalidValue(requestId.getException().getException());
+            }
+            return requestId;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
 
@@ -930,13 +1100,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOSimulationId dtoSimulationId = gson.fromJson(response.body().string(), DTOSimulationId.class);
-        return dtoSimulationId;
+            DTOSimulationId dtoSimulationId = gson.fromJson(response.body().string(), DTOSimulationId.class);
+            if(!dtoSimulationId.getException().getException().equals("allGood")){
+                throw new InvalidValue(dtoSimulationId.getException().getException());
+            }
+            return dtoSimulationId;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOException stopSimulation(Integer simulationId) throws Exception{
@@ -970,13 +1146,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOFinishedSimulation updateNewlyFinishedSimulation(Integer index) throws Exception{
@@ -1007,13 +1189,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOFinishedSimulation finishedSimulation = gson.fromJson(response.body().string(), DTOFinishedSimulation.class);
-        return finishedSimulation;
+            DTOFinishedSimulation finishedSimulation = gson.fromJson(response.body().string(), DTOFinishedSimulation.class);
+            if(!finishedSimulation.getException().getException().equals("allGood")){
+                throw new InvalidValue(finishedSimulation.getException().getException());
+            }
+            return finishedSimulation;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOFinishedSimulationForAdmin updateAdminNewlyFinishedSimulation(Integer index)throws Exception{
@@ -1043,13 +1231,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOFinishedSimulationForAdmin finishedSimulationForAdmin = gson.fromJson(response.body().string(), DTOFinishedSimulationForAdmin.class);
-        return finishedSimulationForAdmin;
+            DTOFinishedSimulationForAdmin finishedSimulationForAdmin = gson.fromJson(response.body().string(), DTOFinishedSimulationForAdmin.class);
+            if(!finishedSimulationForAdmin.getException().getException().equals("allGood")){
+                throw new InvalidValue(finishedSimulationForAdmin.getException().getException());
+            }
+            return finishedSimulationForAdmin;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOException moveOneStep(Integer simulationId)throws Exception{
@@ -1083,13 +1277,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
-        return exception;
+            DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
+            if(!exception.getException().equals("allGood")){
+                throw new InvalidValue(exception.getException());
+            }
+            return exception;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOMap getMap(Integer simulationId)throws Exception{
@@ -1119,13 +1319,19 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOMap map = gson.fromJson(response.body().string(), DTOMap.class);
-        return map;
+            DTOMap map = gson.fromJson(response.body().string(), DTOMap.class);
+            if(!map.getException().getException().equals("allGood")){
+                throw new InvalidValue(map.getException().getException());
+            }
+            return map;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
     public DTOAllSimulationId getAllSimulationIdInSystem(Integer index)throws Exception{
@@ -1155,13 +1361,61 @@ public class clientCommunication {
 
         Call call = HTTP_CLIENT.newCall(request);
 
-        Response response = call.execute();
+        try(Response response = call.execute()) {
 
-        //System.out.println(response.body().string());
+            //System.out.println(response.body().string());
 
 
-        DTOAllSimulationId allSimulationId = gson.fromJson(response.body().string(), DTOAllSimulationId.class);
-        return allSimulationId;
+            DTOAllSimulationId allSimulationId = gson.fromJson(response.body().string(), DTOAllSimulationId.class);
+            if(!allSimulationId.getException().getException().equals("allGood")){
+                throw new InvalidValue(allSimulationId.getException().getException());
+            }
+            return allSimulationId;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
+    }
+
+    public DTOPostRunPrepareSimulationData getSimulationPrepareData(Integer simulationId)throws Exception{
+        String RESOURCE = "/getSimulationPrepareData";
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
+
+        // Add query parameters to the URL
+        urlBuilder.addQueryParameter("simulationId", simulationId.toString());
+
+
+        String url = urlBuilder.build().toString();
+        Gson gson = new Gson();
+
+
+//        RequestBody body =
+//                new MultipartBody.Builder()
+//                        .addFormDataPart("file", file.getName(), RequestBody.create(file, MediaType.parse("text/plain")))
+//                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                        .build();
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        Call call = HTTP_CLIENT.newCall(request);
+
+        try(Response response = call.execute()) {
+
+            //System.out.println(response.body().string());
+
+
+            DTOPostRunPrepareSimulationData postRunPrepareSimulationData = gson.fromJson(response.body().string(), DTOPostRunPrepareSimulationData.class);
+            if(!postRunPrepareSimulationData.getException().getException().equals("allGood")){
+                throw new InvalidValue(postRunPrepareSimulationData.getException().getException());
+            }
+            return postRunPrepareSimulationData;
+        }catch (Exception e){
+            throw new InvalidValue("filed to connect, " + e.getMessage());
+        }
     }
 
 
