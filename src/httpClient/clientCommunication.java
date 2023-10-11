@@ -1418,6 +1418,48 @@ public class clientCommunication {
         }
     }
 
+    public DTOIsThereAdmin isThereAdmin(Integer simulationId)throws Exception{
+        String RESOURCE = "/isThereAdmin";
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
+
+        // Add query parameters to the URL
+        //urlBuilder.addQueryParameter("simulationId", simulationId.toString());
+
+
+        String url = urlBuilder.build().toString();
+        Gson gson = new Gson();
+
+
+//        RequestBody body =
+//                new MultipartBody.Builder()
+//                        .addFormDataPart("file", file.getName(), RequestBody.create(file, MediaType.parse("text/plain")))
+//                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                        .build();
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        Call call = HTTP_CLIENT.newCall(request);
+
+        try(Response response = call.execute()) {
+
+            //System.out.println(response.body().string());
+
+
+            DTOIsThereAdmin isThereAdmin = gson.fromJson(response.body().string(), DTOIsThereAdmin.class);
+            if(!isThereAdmin.getException().getException().equals("allGood")){
+                throw new InvalidValue(isThereAdmin.getException().getException());
+            }
+            return isThereAdmin;
+        }catch (Exception e){
+            throw new InvalidValue(e.getMessage());
+        }
+    }
+
 
     public void setChosenSimulationId(Integer chosenSimulationId){
         this.chosenSimulationId = chosenSimulationId;
