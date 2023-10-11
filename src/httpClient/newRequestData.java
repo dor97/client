@@ -19,8 +19,11 @@ public class newRequestData {
     private Integer newDone;
     private Integer amountToRun;
     private String simulationName;
+    private String userName;
+    private Integer sec;
+    private Integer tick;
 
-    public newRequestData(typeOfNewRequestData type, String simulationName, Integer id, Integer amountToRun, Boolean isStatusChanged, approvementStatus newStatus, Boolean isAmountRunChanged, Integer newAmountRun, Boolean isCurrentRunChanged, Integer newCurrentRun, Boolean isDoneChanged, Integer newDone) {
+    public newRequestData(typeOfNewRequestData type, String simulationName, Integer id, Integer amountToRun, Boolean isStatusChanged, approvementStatus newStatus, Boolean isAmountRunChanged, Integer newAmountRun, Boolean isCurrentRunChanged, Integer newCurrentRun, Boolean isDoneChanged, Integer newDone, String userName, Integer tick, Integer sec) {
         this.type = type;
         this.simulationName = simulationName;
         this.id = id;
@@ -33,6 +36,9 @@ public class newRequestData {
         this.newCurrentRun = newCurrentRun;
         this.isDoneChanged = isDoneChanged;
         this.newDone = newDone;
+        this.userName = userName;
+        this.tick = tick;
+        this.sec = sec;
     }
 
     public newRequestData(){
@@ -134,5 +140,29 @@ public class newRequestData {
 
     public void setId(Integer id){
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getSec() {
+        return sec;
+    }
+
+    public void setSec(Integer sec) {
+        this.sec = sec;
+    }
+
+    public Integer getTick() {
+        return tick;
+    }
+
+    public void setTick(Integer tick) {
+        this.tick = tick;
     }
 }

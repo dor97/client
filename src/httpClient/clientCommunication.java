@@ -123,7 +123,7 @@ public class clientCommunication {
 
         try(Response response = call.execute()) {
 
-            System.out.println(response.body().string());
+            //System.out.println(response.body().string());
             Gson gson = new Gson();
             DTOException exception = gson.fromJson(response.body().string(), DTOException.class);
             if(!exception.getException().equals("allGood")){
@@ -1588,6 +1588,9 @@ public class clientCommunication {
                     requestData.setType(typeOfNewRequestData.UPDATED);
                     requestData.setSimulationName(requestData.getSimulationName());
                     requestData.setAmountToRun(requestData.getAmountToRun());
+                    requestData.setUserName(requestData.getUserName());
+                    requestData.setSec(requestData.getSec());
+                    requestData.setTick(requestData.getTick());
                     if(!(manager.get(request.getId()).getStatus().equals(request.getStatus()))){
                         manager.get(request.getId()).setStatus(request.getStatus());
                         requestData.setStatusChanged(true);
@@ -1616,7 +1619,7 @@ public class clientCommunication {
 
                 }else {
                     synchronized (newRequestDataList) {
-                        newRequestDataList.add(new newRequestData(typeOfNewRequestData.NEW, request.getSimulationName(), request.getId(), request.getAmountToRun(), true, request.getStatus(), true, request.getAmountToRun(), true, request.getCurrentRun(), true, request.getDone()));
+                        newRequestDataList.add(new newRequestData(typeOfNewRequestData.NEW, request.getSimulationName(), request.getId(), request.getAmountToRun(), true, request.getStatus(), true, request.getAmountToRun(), true, request.getCurrentRun(), true, request.getDone(), request.getUserName(), request.getTicks(), request.getSec()));
                     }
                     manager.put(request.getId(), request);
                 }
