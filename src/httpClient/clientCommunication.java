@@ -1418,7 +1418,7 @@ public class clientCommunication {
         }
     }
 
-    public DTOIsThereAdmin isThereAdmin(Integer simulationId)throws Exception{
+    public DTOIsThereAdmin isThereAdmin()throws Exception{
         String RESOURCE = "/isThereAdmin";
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
