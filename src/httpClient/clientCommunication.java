@@ -131,7 +131,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
 
     }
@@ -172,7 +172,7 @@ public class clientCommunication {
             }
             return worldDifenichanCollecen;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -203,7 +203,7 @@ public class clientCommunication {
             }
             return simulationsDetails;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -235,7 +235,7 @@ public class clientCommunication {
             }
             return allSimulationStatus;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
 
     }
@@ -282,7 +282,7 @@ public class clientCommunication {
             }
             return simulationDetails;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
 
     }
@@ -329,7 +329,7 @@ public class clientCommunication {
             }
             return dataForReRun;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -375,7 +375,7 @@ public class clientCommunication {
             }
             return isSimulationGotError;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -421,7 +421,7 @@ public class clientCommunication {
             }
             return simulationError;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -467,7 +467,7 @@ public class clientCommunication {
             }
             return simulationDetailsPostRun;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -510,7 +510,7 @@ public class clientCommunication {
             DTORunningSimulationDetails runningSimulationDetails = gson.fromJson(response.body().string(), DTORunningSimulationDetails.class);
             return runningSimulationDetails;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -556,7 +556,7 @@ public class clientCommunication {
             }
             return simulationStatus;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -602,7 +602,7 @@ public class clientCommunication {
             }
             return allRequestData;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -648,7 +648,7 @@ public class clientCommunication {
             }
             return threadPoolDetails;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -694,7 +694,7 @@ public class clientCommunication {
             }
             return isSimulationRunning;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -740,7 +740,7 @@ public class clientCommunication {
             }
             return numOfCounterRunningSimulation;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -787,7 +787,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -834,7 +834,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -880,7 +880,7 @@ public class clientCommunication {
             }
             return resultOfPrepareSimulation;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
 
     }
@@ -930,7 +930,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -977,7 +977,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1018,7 +1018,7 @@ public class clientCommunication {
             }
             return allSimulationApprovementManager;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1064,7 +1064,7 @@ public class clientCommunication {
             }
             return requestId;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1111,7 +1111,7 @@ public class clientCommunication {
             }
             return dtoSimulationId;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1157,7 +1157,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1200,7 +1200,7 @@ public class clientCommunication {
             }
             return finishedSimulation;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1242,7 +1242,7 @@ public class clientCommunication {
             }
             return finishedSimulationForAdmin;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1288,7 +1288,7 @@ public class clientCommunication {
             }
             return exception;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1330,7 +1330,7 @@ public class clientCommunication {
             }
             return map;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1372,7 +1372,7 @@ public class clientCommunication {
             }
             return allSimulationId;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
@@ -1414,7 +1414,7 @@ public class clientCommunication {
             }
             return postRunPrepareSimulationData;
         }catch (Exception e){
-            throw new InvalidValue("filed to connect, " + e.getMessage());
+            throw new InvalidValue(e.getMessage());
         }
     }
 
