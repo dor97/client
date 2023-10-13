@@ -136,6 +136,57 @@ public class clientCommunication {
 
     }
 
+    public DTOConnected tryToConnectUser(String userName) throws Exception{
+        String RESOURCE = "/tryToConnectUser";
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + RESOURCE).newBuilder();
+
+        // Add query parameters to the URL
+        //urlBuilder.addQueryParameter("simulationId", simulationId.toString());
+
+        String url = urlBuilder.build().toString();
+        Gson gson = new Gson();
+
+
+//        RequestBody body =
+//                new MultipartBody.Builder()
+//                        .addFormDataPart("file", file.getName(), RequestBody.create(file, MediaType.parse("text/plain")))
+//                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                        .build();
+
+        DTONameOfUser dtoUserName = new DTONameOfUser();
+        dtoUserName.setUserName(userName);
+
+        String json = gson.toJson(dtoUserName);
+
+        RequestBody body = RequestBody.create(json, MediaType.parse("text/plain"));
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        Call call = HTTP_CLIENT.newCall(request);
+
+        try(Response response = call.execute()) {
+
+            //System.out.println(response.body().string());
+
+
+            DTOConnected connected = gson.fromJson(response.body().string(), DTOConnected.class);
+            if(!connected.getException().getException().equals("allGood")){
+                throw new InvalidValue(connected.getException().getException());
+            }
+            if(connected.getConnected()){
+                this.userName = userName;
+            }
+            return connected;
+        }catch (Exception e){
+            throw new InvalidValue(e.getMessage());
+        }
+
+    }
+
     public DTOWorldDifenichanCollecen _getWorldDifenichanCollecen(Integer index) throws Exception {
 
         String RESOURCE = "/simulationDefinition/WorldDifenichanCollecen";
