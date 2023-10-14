@@ -1551,13 +1551,25 @@ public class clientCommunication {
             userName = "admin";
         }
 
-        new Thread(() -> loopFetchRunningSimulationDetails()).start();
-        new Thread(() -> loopFetchSimulationFinishedId()).start();
-        new Thread(() -> loopFetchWorldDifenichanCollecen()).start();
+        Thread runningSimulationDetailsThread = new Thread(() -> loopFetchRunningSimulationDetails());
+        Thread simulationFinishedIdThread = new Thread(() -> loopFetchSimulationFinishedId());
+        Thread worldDifenichanCollecenThread = new Thread(() -> loopFetchWorldDifenichanCollecen());
         if(isAdmin) {
-            new Thread(() -> loopFetchThreadPoolDetails()).start();
+            Thread threadPoolDetailsThread = new Thread(() -> loopFetchThreadPoolDetails());
+            threadPoolDetailsThread.setDaemon(true);
+            threadPoolDetailsThread.start();
         }
-        new Thread(() -> loopFetchSimulationApprovementManager()).start();
+        Thread simulationApprovementManagerThread = new Thread(() -> loopFetchSimulationApprovementManager());
+
+        runningSimulationDetailsThread.setDaemon(true);
+        simulationFinishedIdThread.setDaemon(true);
+        worldDifenichanCollecenThread.setDaemon(true);
+        simulationApprovementManagerThread.setDaemon(true);
+
+        runningSimulationDetailsThread.start();
+        simulationFinishedIdThread.start();
+        worldDifenichanCollecenThread.start();
+        simulationApprovementManagerThread.start();
 
     }
 
