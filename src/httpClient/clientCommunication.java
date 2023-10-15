@@ -23,7 +23,7 @@ import static httpClient.Configuration.HTTP_CLIENT;
 
 public class clientCommunication {
 
-    private String BASE_URL = "http://localhost:8080/Server_Web_exploded";
+    private String BASE_URL = "http://localhost:8080/Server_Web";
     private String userName = "user";
     private Boolean isAdmin = false;
     private String chosenSimulationName;
